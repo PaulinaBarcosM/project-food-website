@@ -60,6 +60,7 @@ body {
 }
 
 .menu-2 {
+    margin-bottom: auto;
     margin-left: 180px;
     display: flex;
     align-items: center;
@@ -385,6 +386,98 @@ body {
     font-size: 16px;
     margin-bottom: 5px;
     display: inline-block;
+}
+
+/* CSS DEL CARRITO */
+#body-carrito {
+    background-color: #080202;
+    color: #FFFFFF;
+}
+
+.header-carrito {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    margin: 40px;
+}
+
+.titulo-carrito{
+    font-size: 50px;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.nav-carrito {
+    width: 100%;
+    
+}
+
+.nav-carrito ul {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.menu-carrito a {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #DB241B;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 8px;
+}
+
+.menu-carrito a:hover {
+    background-color: #b51d16;
+}
+
+.boton-carrito{
+    margin-top: 15px;
+    margin-left: 200px;
+}
+
+.carrito-producto {
+    display: inline-block;
+    background-color: #f8f1e5;
+    color: #FFFFFF;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 1rem;
+    padding: 1rem;
+}
+
+/* Botón eliminar con efecto hover */
+.carrito-producto-eliminar {
+    background: none;
+    color: #d32f2f;
+    font-size: 1.5rem;
+    transition: transform 0.2s;
+    cursor: pointer;
+}
+
+.carrito-producto-eliminar:hover {
+    transform: scale(1.2);
+}
+
+/* Botones principales */
+.carrito-acciones-vaciar {
+    background-color: #d32f2f;
+    color: #fff;
+    font-weight: bold;
+}
+
+.carrito-acciones-comprar {
+    background-color: #ffb300;
+    color: #3e2723;
+    font-weight: bold;
+}
+
+.footer-carrito {
+    display: flex;
+    margin-top: 30px;
 }
 
 /* Responsive mobile */
