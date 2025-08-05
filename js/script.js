@@ -1,5 +1,5 @@
 // Inicializar el primer Swiper
-const swiper = new Swiper(".mySwiper-1", {
+const swiperHeader = new Swiper(".mySwiper-1", {
   slidesPerView: 1,
   spaceBetween: 30,
   loop: true,
@@ -13,25 +13,42 @@ const swiper = new Swiper(".mySwiper-1", {
   },
 });
 
-// Inicializar el segundo Swiper
+// Función para duplicar slides si son menos de 4
+function duplicateSlidesIfNeeded(swiperSelector) {
+  const swiperEl = document.querySelector(swiperSelector + " .swiper-wrapper");
+  if (!swiperEl) return;
+
+  const slides = swiperEl.children;
+  if (slides.length < 4) {
+    const slidesArray = Array.from(slides);
+    while (swiperEl.children.length < 4) {
+      slidesArray.forEach((slide) => {
+        if (swiperEl.children.length < 4) {
+          swiperEl.appendChild(slide.cloneNode(true));
+        }
+      });
+    }
+  }
+}
+
+// Duplicar para cada carrusel
+duplicateSlidesIfNeeded("#swiper1");
+duplicateSlidesIfNeeded("#swiper2");
+duplicateSlidesIfNeeded("#swiper3");
+
+// Inicializar Swipers
 const swiper1 = new Swiper("#swiper1", {
   slidesPerView: 3,
   spaceBetween: 20,
   loop: true,
   navigation: {
-    nextEl: "#swiper1 .main-next-1",
-    prevEl: "#swiper1 .main-prev-1",
+    nextEl: "#swiper1 .main-next",
+    prevEl: "#swiper1 .main-prev",
   },
   breakpoints: {
-    0: {
-      slidesPerView: 1,
-    },
-    520: {
-      slidesPerView: 2,
-    },
-    950: {
-      slidesPerView: 3,
-    },
+    0: { slidesPerView: 1 },
+    520: { slidesPerView: 2 },
+    950: { slidesPerView: 3 },
   },
 });
 
@@ -40,8 +57,8 @@ const swiper2 = new Swiper("#swiper2", {
   spaceBetween: 20,
   loop: true,
   navigation: {
-    nextEl: "#swiper2 .main-next-2",
-    prevEl: "#swiper2 .main-prev-2",
+    nextEl: "#swiper2 .main-next",
+    prevEl: "#swiper2 .main-prev",
   },
   breakpoints: {
     0: { slidesPerView: 1 },
@@ -55,24 +72,12 @@ const swiper3 = new Swiper("#swiper3", {
   spaceBetween: 20,
   loop: true,
   navigation: {
-    nextEl: "#swiper3 .main-next-3",
-    prevEl: "#swiper3 .main-prev-3",
+    nextEl: "#swiper3 .main-next",
+    prevEl: "#swiper3 .main-prev",
   },
   breakpoints: {
     0: { slidesPerView: 1 },
     520: { slidesPerView: 2 },
     950: { slidesPerView: 3 },
   },
-});
-
-// Seleccionar inputs de pestañas
-const tabInputs = document.querySelectorAll(".tabInput");
-
-tabInputs.forEach((input) => {
-  input.addEventListener("change", () => {
-    const id = input.value;
-    const thisSwiper = document.getElementById("swiper" + id);
-    thisSwiper.swiper.update();
-    thisSwiper.swiper.slideTo(0);
-  });
 });
