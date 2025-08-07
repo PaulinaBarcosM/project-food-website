@@ -19,13 +19,15 @@ document.addEventListener("DOMContentLoaded", () => {
       descripcion:
         "Hamburguesa de carne smalleada con doble cheddar, rucula, hongos y queso azul",
       precio: 8000,
-      imagen: "./img-food/food4.png",
+      imagen: "./img-food/food2.png",
     },
   ];
 
   const contHamburguesa = document.getElementById("menu-hamburguesas");
 
   function renderizarMenu(array, contenedor) {
+    contenedor.innerHTML = "";
+
     array.forEach((producto) => {
       //crear tarjeta
       const card = document.createElement("div");
@@ -45,11 +47,10 @@ document.addEventListener("DOMContentLoaded", () => {
       const desc = document.createElement("p");
       desc.textContent = producto.descripcion;
 
-      // Opción extra (si existe)
+      // Opción extra
+      const opcion = document.createElement("small");
       if (producto.opcion) {
-        const opcion = document.createElement("small");
         opcion.textContent = producto.opcion;
-        card.appendChild(opcion);
       }
 
       //precio
@@ -59,13 +60,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
       //boton agregar
       const boton = document.createElement("button");
-      boton.textContent = "Quiero esta";
       boton.classList.add("btn-agregar");
+      boton.innerHTML = `<i class="fas fa-shopping-cart"></i> Quiero esta!`;
+
+      // 🛒 Agregar evento al botón
+      //boton.addEventListener("click", () => {
+      //agregarAlCarrito(producto);
+      //});
 
       // Agregar elementos a la tarjeta
       card.appendChild(img);
       card.appendChild(titulo);
       card.appendChild(desc);
+      if (producto.opcion) {
+        card.appendChild(opcion);
+      }
       card.appendChild(precio);
       card.appendChild(boton);
 
