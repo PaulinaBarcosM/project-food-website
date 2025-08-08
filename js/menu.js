@@ -23,7 +23,59 @@ document.addEventListener("DOMContentLoaded", () => {
     },
   ];
 
+  const burritos = [
+    {
+      nombre: "Burrito Clásico",
+      descripcion:
+        "Tortilla de trigo rellena de carne, arroz, porotos y guacamole",
+      precio: 7500,
+      imagen: "./img-food/food4.png",
+      opcion: "*opcional: extra jalapeños*",
+    },
+    {
+      nombre: "Burrito Veggie",
+      descripcion:
+        "Relleno de tofu crocante con pimientos salteados, arroz, guacamole y portos negros",
+      precio: 7500,
+      imagen: "./img-food/food5.png",
+    },
+    {
+      nombre: "Burrito de Mar",
+      descripcion:
+        "Langostino, carne y arroz salteado con pimientos, guacamole, porotos y queso",
+      precio: 8000,
+      imagen: "./img-food/food6.png",
+    },
+  ];
+
+  const variedad = [
+    {
+      nombre: "Langostinos al plato",
+      descripcion:
+        "Salteado de langostinos con cebolla morada, lechuga, papas, perejil y salsa picante",
+      precio: 10500,
+      imagen: "./img-food/food7.png",
+    },
+    {
+      nombre: "Brochetas",
+      descripcion:
+        "Brochetas de pollo o carne con pimientos y cebollas asadas acompañado de guarnición",
+      precio: 10000,
+      imagen: "./img-food/food8.png",
+      opcion: "*consultar por guarnición disponible*",
+    },
+    {
+      nombre: "Pizza Individual",
+      descripcion: "Pizza de mozzarella con salame en rodajas",
+      precio: 3000,
+      imagen: "./img-food/food9.png",
+      opcion: "*consultar por otros sabores*",
+    },
+  ];
+
   const contHamburguesa = document.getElementById("menu-hamburguesas");
+  const contBurritos = document.getElementById("menu-sandwiches");
+  const contVariedad = document.getElementById("menu-variedad");
 
   function renderizarMenu(array, contenedor) {
     contenedor.innerHTML = "";
@@ -84,4 +136,6 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   renderizarMenu(hamburguesas, contHamburguesa);
+  renderizarMenu(burritos, contBurritos);
+  renderizarMenu(variedad, contVariedad);
 });
