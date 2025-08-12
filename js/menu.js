@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   const hamburguesas = [
     {
-      nombre: "Clásica",
+      nombre: "Alfajor",
       descripcion:
         "Carne 100% vacuna, queso cheddar y salsa especial de alioli",
       precio: 8000,
@@ -20,6 +20,13 @@ document.addEventListener("DOMContentLoaded", () => {
         "Hamburguesa de carne smalleada con doble cheddar, rucula, hongos y queso azul",
       precio: 8000,
       imagen: "./img-food/food2.png",
+    },
+    {
+      nombre: "Extra bacon",
+      descripcion: "Carne 100% vacuna, triple bacon, chedar, lechuga y tomate",
+      precio: 5000,
+      imagen: "./img-food/slider1.png",
+      opcion: "¡¡llevatela con el 50% de descuento!!",
     },
   ];
 
