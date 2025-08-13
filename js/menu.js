@@ -101,11 +101,15 @@ document.addEventListener("DOMContentLoaded", () => {
     const carrito = obtenerCarrito();
     const numeritoMenu = document.querySelector(".boton-carrito span");
     const numeritoIndex = document.getElementById("numerito");
+    const numeritoHeaderMenu = document.querySelector(
+      ".btn-carrito-menu #numerito"
+    );
 
     const totalCantidad = carrito.reduce((acc, prod) => acc + prod.cantidad, 0);
 
     if (numeritoMenu) numeritoMenu.textContent = totalCantidad;
     if (numeritoIndex) numeritoIndex.textContent = totalCantidad;
+    if (numeritoHeaderMenu) numeritoHeaderMenu.textContent = totalCantidad;
   }
 
   // agregar productos al carrito
@@ -116,7 +120,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (existe) {
       existe.cantidad++;
     } else {
-      carrito.push({ ...producto, cantidad: 1 });
+      carrito.push({ ...producto, cantidad: 1, id: crypto.randomUUID() });
     }
 
     guardarCarrito(carrito);
