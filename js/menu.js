@@ -84,6 +84,46 @@ document.addEventListener("DOMContentLoaded", () => {
   const contBurritos = document.getElementById("menu-sandwiches");
   const contVariedad = document.getElementById("menu-variedad");
 
+  // === Funciones para carrito ===
+
+  //obtener carrito desde localStorage o crear uno vacío
+  function obtenerCarrito() {
+    return JSON.parse(localStorage.getItem("carrito")) || [];
+  }
+
+  //guardar carrito en localStorage
+  function guardarCarrito(carrito) {
+    localStorage.setItem("carrito", JSON.stringify(carrito));
+  }
+
+  //actualizar el numerito del carrito en el header (para index y menu)
+  function actualizarNumerito() {
+    const carrito = obtenerCarrito();
+    const numeritoMenu = document.querySelector(".boton-carrito span");
+    const numeritoIndex = document.getElementById("numerito");
+
+    const totalCantidad = carrito.reduce((acc, prod) => acc + prod.cantidad, 0);
+
+    if (numeritoMenu) numeritoMenu.textContent = totalCantidad;
+    if (numeritoIndex) numeritoIndex.textContent = totalCantidad;
+  }
+
+  // agregar productos al carrito
+  function agregarAlCarrito(producto) {
+    let carrito = obtenerCarrito();
+    const existe = carrito.find((item) => item.nombre === producto.nombre);
+
+    if (existe) {
+      existe.cantidad++;
+    } else {
+      carrito.push({ ...producto, cantidad: 1 });
+    }
+
+    guardarCarrito(carrito);
+    actualizarNumerito();
+  }
+
+  // Renderizado de productos del menú
   function renderizarMenu(array, contenedor) {
     contenedor.innerHTML = "";
 
@@ -122,10 +162,10 @@ document.addEventListener("DOMContentLoaded", () => {
       boton.classList.add("btn-agregar");
       boton.innerHTML = `<i class="fas fa-shopping-cart"></i> Quiero esta!`;
 
-      // 🛒 Agregar evento al botón
-      //boton.addEventListener("click", () => {
-      //agregarAlCarrito(producto);
-      //});
+      //evento para agregar al carrito
+      boton.addEventListener("click", () => {
+        agregarAlCarrito(producto);
+      });
 
       // Agregar elementos a la tarjeta
       card.appendChild(img);
@@ -145,4 +185,23 @@ document.addEventListener("DOMContentLoaded", () => {
   renderizarMenu(hamburguesas, contHamburguesa);
   renderizarMenu(burritos, contBurritos);
   renderizarMenu(variedad, contVariedad);
+
+  // === Vincular botones del slider del index ===
+  document.querySelectorAll(".btn-comprar-slider").forEach((boton) => {
+    boton.addEventListener("click", () => {
+      const nombreProducto = boton.dataset.nombre;
+      const producto =
+        hamburguesas.find((p) => p.nombre === nombreProducto) ||
+        burritos.find((p) => p.nombre === nombreProducto) ||
+        variedad.find((p) => p.nombre === nombreProducto);
+
+      if (producto) {
+        agregarAlCarrito(producto);
+      } else {
+        console.error("Producto no encontrado en el menú:", nombreProducto);
+      }
+    });
+  });
+
+  actualizarNumerito();
 });

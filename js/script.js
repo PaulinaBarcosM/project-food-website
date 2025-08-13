@@ -81,3 +81,41 @@ const swiper3 = new Swiper("#swiper3", {
     950: { slidesPerView: 3 },
   },
 });
+
+const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+const numeritoCarrito = document.querySelector(".boton-carrito span");
+
+function actualizarNumerito() {
+  const totalCantidad = carrito.reduce((acc, prod) => acc + prod.cantidad, 0);
+  if (numeritoCarrito) numeritoCarrito.textContent = totalCantidad;
+}
+
+function agregarAlCarritoPorNombre(nombreProducto) {
+  const producto =
+    hamburguesas.find((p) => p.nombre === nombreProducto) ||
+    burritos.find((p) => p.nombre === nombreProducto) ||
+    variedad.find((p) => p.nombre === nombreProducto);
+
+  if (!producto) return alert("Producto no encontrado");
+
+  const existe = carrito.find((item) => item.nombre === producto.nombre);
+
+  if (existe) {
+    existe.cantidad++;
+  } else {
+    carrito.push({ ...producto, cantidad: 1 });
+  }
+
+  localStorage.setItem("carrito", JSON.stringify(carrito));
+  actualizarNumerito();
+}
+
+//evento para botones comprar slider
+document.addEventListener("click", (e) => {
+  if (e.target.classList.contains("btn-comprar-slider")) {
+    const nombreProd = e.target.dataset.nombre;
+    agregarAlCarritoPorNombre(nombreProd);
+  }
+});
+
+actualizarNumerito();

@@ -591,7 +591,6 @@ body {
     font-weight: 800;
 }
 
-/* revisar el boton del carrito porque pisa el del inicio*/
 .accion-volver-menu,
 .btn-carrito-menu {
     background-color: #DB241B;
@@ -608,11 +607,6 @@ body {
 .btn-carrito-menu:hover {
     background-color: #b51d16;
 }
-
-/*.accion-volver-menu,
-.boton-menu {
-    z-index: 1; /* asegura que se escondan detras del titulo 
-}*/
 
 .categoria-menu {
     font-size: 25px;
