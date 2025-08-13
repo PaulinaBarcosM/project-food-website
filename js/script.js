@@ -1,3 +1,26 @@
+const hamburguesas = [
+  { nombre: "Alfajor", precio: 8000, imagen: "./img-food/food1.png" },
+  { nombre: "BBQ Bacon", precio: 9500, imagen: "./img-food/food3.png" },
+  { nombre: "Big Mac", precio: 8000, imagen: "./img-food/food2.png" },
+  { nombre: "Extra bacon", precio: 5000, imagen: "./img-food/slider1.png" },
+];
+
+const burritos = [
+  { nombre: "Burrito Clásico", precio: 7500, imagen: "./img-food/food4.png" },
+  { nombre: "Burrito Veggie", precio: 7500, imagen: "./img-food/food5.png" },
+  { nombre: "Burrito de Mar", precio: 8000, imagen: "./img-food/food6.png" },
+];
+
+const variedad = [
+  {
+    nombre: "Langostinos al plato",
+    precio: 10500,
+    imagen: "./img-food/food7.png",
+  },
+  { nombre: "Brochetas", precio: 10000, imagen: "./img-food/food8.png" },
+  { nombre: "Pizza Individual", precio: 3000, imagen: "./img-food/food9.png" },
+];
+
 // Inicializar el primer Swiper
 const swiperHeader = new Swiper(".mySwiper-1", {
   slidesPerView: 1,
@@ -82,6 +105,7 @@ const swiper3 = new Swiper("#swiper3", {
   },
 });
 
+// === Carrito ===
 const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 const numeritoCarrito = document.querySelector(".boton-carrito span");
 
