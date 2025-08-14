@@ -173,8 +173,10 @@ body {
 }
 
 .slider-img img {
-    margin-right: 225px;
-    width: 550px;
+    /*margin-right: 225px;
+    width: 550px;*/
+    max-width: 100%;
+    height: auto;
 }
 
 /* Main */
@@ -250,8 +252,8 @@ body {
 }
 
 .product-img img {
-    width: 150px;
-    height: 120px;
+    max-width: 100%;
+    height: auto;
 }
 
 .product-txt {
@@ -291,8 +293,8 @@ body {
 }
 
 .info-img img {
-    width: 500px;
-    height: 250px;
+    width: 100%;
+    height: auto;
 }
 
 .info-txt {
@@ -677,8 +679,8 @@ body {
     background-color: #b51d16;
 }
 
-/* Responsive mobile */
-@media(max-width: 996px) {
+/* Responsive */
+/*@media(max-width: 996px) {
     .menu {
         padding: 20px;
         justify-content: space-between;
@@ -834,5 +836,241 @@ body {
 
     .links h4 {
         margin: 25px 0px 10px 0px;
+    }
+
+    /* footer carrito/menu 
+
+    .footer-carrito img {
+        margin-left: auto;
+    }
+}*/
+
+/*@media(max-width: 768px) {}*/
+
+/* mobile 
+@media(min-width: 480px) {
+    .header-content {
+        margin-top: 130px;
+    }
+}*/
+
+/* Tablet grande */
+@media (max-width: 996px) {
+    .menu {
+        padding: 20px;
+        justify-content: space-between;
+    }
+
+    .menu-2 {
+        display: none;
+    }
+
+    .logo-1 {
+        width: 100px;
+    }
+
+    .logo-2 {
+        width: 0;
+    }
+
+    .menu label {
+        display: initial;
+    }
+
+    .menu .navbar {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: #181818;
+        display: none;
+    }
+
+    #menu:checked~.navbar {
+        display: initial;
+    }
+
+    .header-content {
+        padding: 30px;
+        margin-top: 100px;
+    }
+
+    .slider {
+        margin-top: 25px;
+        flex-direction: column;
+    }
+
+    .slider-txt {
+        margin-left: 0;
+        width: 100%;
+        text-align: center;
+        margin-bottom: 50px;
+    }
+
+    .slider-txt h1 {
+        font-size: 50px;
+    }
+
+    .slider-txt p {
+        font-size: 16px;
+    }
+
+    .btn-1 {
+        padding: 10px 25px;
+        font-size: 14px;
+    }
+
+    .slider-img {
+        width: 100%;
+        text-align: center;
+    }
+
+    .slider-img img {
+        margin-right: 0;
+        width: 300px;
+        height: auto;
+    }
+
+    .tabs {
+        padding: 50px 30px;
+    }
+
+    .tabs label {
+        width: 33%;
+    }
+
+    .info {
+        padding: 30px;
+        flex-direction: column;
+    }
+
+    .info-img {
+        width: 100%;
+        text-align: center;
+    }
+
+    .info-img img {
+        width: 400px;
+        height: auto;
+        margin-bottom: 25px;
+    }
+
+    .info-txt {
+        width: 100%;
+        text-align: center;
+    }
+
+    .info-txt h2 {
+        font-size: 50px;
+    }
+
+    .info-txt p {
+        font-size: 16px;
+    }
+
+    .horario {
+        padding: 30px;
+        text-align: center;
+    }
+
+    .horario-info h2 {
+        font-size: 50px;
+        margin-bottom: 15px;
+    }
+
+    .horario-txt {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .socials {
+        justify-content: center;
+    }
+
+    .socials img {
+        margin: 8px 0 0 0;
+    }
+
+    .footer {
+        padding: 30px;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .links h4 {
+        margin: 25px 0px 10px 0px;
+    }
+}
+
+/* Tablet pequeña / landscape mobile */
+@media (max-width: 768px) {
+    .slider-txt h1 {
+        font-size: 40px;
+    }
+
+    .tabs label {
+        width: 50%;
+        font-size: 16px;
+    }
+
+    .slider-img img {
+        width: 250px;
+    }
+
+    .info-txt h2 {
+        font-size: 40px;
+    }
+
+    .info-txt p {
+        font-size: 14px;
+    }
+
+    .horario-info h2 {
+        font-size: 40px;
+    }
+
+    .horario-txt {
+        gap: 20px;
+    }
+}
+
+/* Mobile / portrait */
+@media (max-width: 480px) {
+    .slider-txt h1 {
+        font-size: 30px;
+    }
+
+    .slider-txt p {
+        font-size: 14px;
+    }
+
+    .btn-1 {
+        padding: 8px 20px;
+        font-size: 12px;
+    }
+
+    .slider-img img {
+        width: 200px;
+    }
+
+    .tabs label {
+        width: 100%;
+        font-size: 14px;
+    }
+
+    .info-txt h2 {
+        font-size: 30px;
+    }
+
+    .info-txt p {
+        font-size: 12px;
+    }
+
+    .horario-info h2 {
+        font-size: 30px;
+    }
+
+    .footer {
+        padding: 20px;
     }
 }
