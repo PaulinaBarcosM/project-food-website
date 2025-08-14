@@ -948,6 +948,67 @@ body {
         text-align: center;
         margin-bottom: 20px;
     }
+
+    /* carrito */
+    .carrito-productos {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .carrito-producto {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 0.5rem;
+    }
+
+    .carrito-producto-imagen {
+        width: 100px;
+        height: auto;
+    }
+
+    .carrito-producto-titulo,
+    .carrito-producto-cantidad,
+    .carrito-producto-precio,
+    .carrito-producto-subtotal {
+        min-width: auto;
+        width: 100%;
+        align-items: center;
+    }
+
+    .carrito-producto-eliminar {
+        margin-left: 0;
+    }
+    
+    .carrito-acciones {
+        flex-direction: column;
+        gap: 1rem;
+        width: 100%;
+    }
+
+    .carrito-acciones-vaciar {
+        margin: 25px 0;
+    }
+
+    .carrito-acciones-derecha {
+        flex-direction: column;
+        gap: 0.5rem;
+        width: 100%;
+        align-items: center;
+    }
+
+    .carrito-acciones-total {
+        width: 50%;
+        justify-content: center;
+    }
+
+    .carrito-acciones-comprar {
+        width: 50%;
+        text-align: center;
+        font-size: 15px;
+    }
 }
 
 /* Mobile */
