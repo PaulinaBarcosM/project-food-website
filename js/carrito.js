@@ -27,12 +27,24 @@ const contenedorProductos = document.querySelector(".carrito-productos");
 const contenedorVacio = document.querySelector(".carrito-vacio");
 const contenedorAcciones = document.querySelector(".carrito-acciones");
 const totalElemento = document.querySelector("#total");
+const mensajeComprado = document.querySelector(".carrito-comprado");
 
 function renderCarrito() {
   const carrito = obtenerCarrito();
 
+  //ocultar mensaje al renderizar (se muestra solo despues de la compra)
+  if (mensajeComprado.classList.contains("disabled")) {
+    mensajeComprado.classList.add("disabled");
+  }
+
   if (carrito.length === 0) {
-    contenedorVacio.style.display = "block";
+    //si ya se hizo una compra, no muestra el mensaje del carrito vacio
+    if (mensajeComprado.classList.contains("disabled")) {
+      contenedorVacio.style.display = "block";
+    } else {
+      contenedorVacio.style.display = "none";
+    }
+
     contenedorProductos.classList.add("disabled");
     contenedorAcciones.classList.add("disabled");
     totalElemento.textContent = "$0";
@@ -109,6 +121,7 @@ document
   .addEventListener("click", () => {
     guardarCarrito([]);
     renderCarrito();
+    mensajeComprado.classList.add("disabled");
   });
 
 // Comprar ahora
@@ -118,8 +131,9 @@ botonComprarAhora.addEventListener("click", () => {
   if (carrito.length === 0) {
     alert("Tu carrito está vacío");
   } else {
-    alert("Muchas gracias por tu compra!!");
     guardarCarrito([]);
+    mensajeComprado.classList.remove("disabled");
+    contenedorVacio.style.display = "none";
     renderCarrito();
   }
 });
