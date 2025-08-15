@@ -124,8 +124,12 @@ document
     mensajeComprado.classList.add("disabled");
   });
 
-// Comprar ahora
+// Comprar ahora -> mostrar modal
 const botonComprarAhora = document.querySelector(".carrito-acciones-comprar");
+const modal = document.getElementById("modal-compra");
+const cerrarModal = document.querySelector(".modal-cerrar");
+const formCompra = document.getElementById("form-compra");
+
 botonComprarAhora.addEventListener("click", () => {
   const carrito = obtenerCarrito();
   if (carrito.length === 0) {
@@ -134,8 +138,44 @@ botonComprarAhora.addEventListener("click", () => {
     guardarCarrito([]);
     mensajeComprado.classList.remove("disabled");
     contenedorVacio.style.display = "none";
+    modal.style.display = "block";
     renderCarrito();
   }
+});
+
+// cerrar modal con la X
+cerrarModal.addEventListener("click", () => {
+  modal.style.display = "none";
+});
+
+// cerrar modal clikeando afuera
+window.addEventListener("click", (e) => {
+  if (e.target === modal) {
+    modal.style.display = "none";
+  }
+});
+
+// enviar formulario de compra
+formCompra.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  //validacion
+  if (
+    !document.getElementById("nombre").value.trim() ||
+    !document.getElementById("dni").value.trim() ||
+    !document.getElementById("telefono").value.trim() ||
+    !document.getElementById("email").value.trim() ||
+    !document.getElementById("pago").value
+  ) {
+    alert("Por favor complete todos los campos.");
+    return;
+  }
+
+  //si todo bien
+  modal.style.display = "none";
+  alert("Muchas gracias por tu compra!! Pronto nos pondremos en contacto.");
+  guardarCarrito([]);
+  renderCarrito();
 });
 
 // Render inicial
